@@ -1,17 +1,67 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-title>
+			Forecast
+		</ion-title>
+	</ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+	<ion-header collapse="condense">
+		<ion-toolbar>
+			<ion-title size="large">Forecast</ion-title>
+		</ion-toolbar>
+	</ion-header>
+	<div id="container">
+		<div *ngFor="let data of weathers.list">
+			<div (click)="detailpage(data)">
+				<div *ngFor="let w of data.weather">
+					<div class="d-flex justify-content-between mb-2">
+						<div class="d-flex align-items-center">
+							<img src="http://openweathermap.org/img/wn/{{w.icon}}@2x.png" height="50px" class="me-1" />
+							<div>
+								<h5>{{w.main}} - {{w.description}}</h5>
+								<p>{{data.dt_txt | date: 'd MMMM - HH aa'}}</p>
+							</div>
+						</div>
+	
+						<div class="text-end">
+							<h5 class="text-success">{{data.main.temp}}&#8451;</h5>
+							<p class="text-success">{{data.main.temp_min}} - {{data.main.temp_max}}&#8451;</p>
+						</div>
+					</div>
+				</div>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+			</div>
+		</div>
+	</div>
 </ion-content>
+
+
+<!-- <ion-content>
+	<ion-list>
+		<button>
+			<ion-item *ngFor="let w of whList">
+				<ion-grid (click)="detailpage(w)">
+					<ion-row *ngFor="let d of data.weather">
+						<ion-col size="2">
+							<img src="http://openweathermap.org/img/wn/{{d.icon}}@2x.png" height="55px" />
+						</ion-col>
+						<ion-col size="6">
+							<ion-label>
+								{{d.main}} - {{d.description}}<br />
+								<small>{{w.dt_txt|date:'dd MMM yyyy - HH:mm '}}</small>
+							</ion-label>
+						</ion-col>
+						<ion-col size="4" class="ion-text-right">
+							<ion-label color="success">
+								{{w.main.temp}} °C<br />
+								<small>{{w.main.temp_min}} ~ {{w.main.temp_max}} °C</small>
+							</ion-label>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-item>
+		</button>
+	</ion-list>
+</ion-content> -->
