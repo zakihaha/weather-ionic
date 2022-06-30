@@ -8,7 +8,7 @@ import { Platform } from '@ionic/angular';
 })
 export class Tab3Page {
 
-	public fav;
+	public favs;
 
 	constructor(private platform: Platform,) {
 	}
@@ -23,7 +23,9 @@ export class Tab3Page {
 	}
 
 	getFavorite() {
-		this.fav = JSON.parse(localStorage.getItem('fav'));
+		this.favs = JSON.parse(localStorage.getItem('fav'));
+		console.log(this.favs);
+		
 	}
 	
 }

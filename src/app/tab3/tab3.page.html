@@ -6,7 +6,7 @@
 	</ion-toolbar>
 </ion-header>
 <ion-content onload="getFavorite()">
-	<ion-list>
+	<ion-list *ngFor="let fav of favs">
 		<ion-item>
 			<ion-grid>
 				<ion-row>

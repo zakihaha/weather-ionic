@@ -23,7 +23,16 @@ export class DetailPage implements OnInit {
 	}
 
 	save() {
-		localStorage.setItem('fav', JSON.stringify(this.weather));
+		// Parse any JSON previously stored in allEntries
+		var existingEntries = JSON.parse(localStorage.getItem("fav"));
+		
+		if(existingEntries == null) existingEntries = [];
+		
+		localStorage.setItem("fav", JSON.stringify(this.weather));
+		// Save allEntries back to local storage
+		existingEntries.push(this.weather);
+		localStorage.setItem("fav", JSON.stringify(existingEntries));
+		
 	}
 
 }
